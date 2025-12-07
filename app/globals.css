@@ -7,6 +7,11 @@
   --aldees-yellow: #ffe500;
   --aldees-black: #000000;
   --aldees-offwhite: #f5f5f5;
+  --aldees-red: #ff4757;
+  --aldees-orange: #ff6b35;
+  --aldees-green: #2ed573;
+  --aldees-blue: #3742fa;
+  --aldees-purple: #9c88ff;
 
   --background: #000000;
   --foreground: #f5f5f5;
@@ -79,8 +84,8 @@
 }
 
 @theme inline {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Bebas Neue", "Oswald", sans-serif;
+  --font-sans: var(--font-myriad-pro), system-ui, sans-serif;
+  --font-display: var(--font-chery-rush), sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -151,7 +156,8 @@
 }
 
 .glow-yellow-intense {
-  text-shadow: 0 0 40px rgba(255, 229, 0, 0.8), 0 0 80px rgba(255, 229, 0, 0.5), 0 0 120px rgba(255, 229, 0, 0.3);
+  text-shadow: 0 0 40px rgba(255, 229, 0, 0.8), 0 0 80px rgba(255, 229, 0, 0.5),
+    0 0 120px rgba(255, 229, 0, 0.3);
 }
 
 /* 3D Card Effect */

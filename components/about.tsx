@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Leaf, Award, Clock, Shield } from "lucide-react"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Leaf, Award, Clock, Shield } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   { icon: Leaf, title: "Fresh Ingredients", desc: "Farm to table quality" },
   { icon: Award, title: "Best Taste", desc: "Award-winning recipes" },
   { icon: Shield, title: "Hygienic Kitchen", desc: "5-star safety rated" },
   { icon: Clock, title: "Quick Service", desc: "Fast & efficient" },
-]
+];
 
 export default function About() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const featuresRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,11 +39,11 @@ export default function About() {
             start: "top 60%",
             toggleActions: "play none none reverse",
           },
-        },
-      )
+        }
+      );
 
       // Content stagger
-      const contentElements = contentRef.current?.children
+      const contentElements = contentRef.current?.children;
       if (contentElements) {
         gsap.fromTo(
           contentElements,
@@ -59,21 +59,21 @@ export default function About() {
               start: "top 70%",
               toggleActions: "play none none reverse",
             },
-          },
-        )
+          }
+        );
       }
 
       // Features grid animation
-      const featureCards = featuresRef.current?.children
+      const featureCards = featuresRef.current?.children;
       if (featureCards) {
         gsap.fromTo(
           featureCards,
-          { y: 60, opacity: 0, scale: 0.9 },
+          { y: 50, opacity: 0, scale: 0.9 },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.8,
+            duration: 0.4,
             stagger: 0.1,
             ease: "back.out(1.7)",
             scrollTrigger: {
@@ -81,16 +81,19 @@ export default function About() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          },
-        )
+          }
+        );
       }
-    }, sectionRef)
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-32 md:py-40 bg-aldees-black overflow-hidden">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="relative py-32 md:py-40 bg-aldees-black overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-aldees-yellow/5 to-transparent" />
       <div className="absolute inset-0 noise-overlay" />
@@ -100,7 +103,11 @@ export default function About() {
           {/* Image Column with 3D Tilt */}
           <div ref={imageRef} className="relative">
             <div className="relative aspect-[4/5] overflow-hidden">
-              <img src="/chef-cooking-in-professional-kitchen--warm-lightin.jpg" alt="ALDEE'S Kitchen" className="w-full h-full object-cover" />
+              <img
+                src="/chef-cooking-in-professional-kitchen--warm-lightin.jpg"
+                alt="ALDEE'S Kitchen"
+                className="w-full h-full object-cover"
+              />
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-aldees-black/60 via-transparent to-transparent" />
             </div>
@@ -108,13 +115,12 @@ export default function About() {
             {/* Floating Stats Card */}
             <div className="absolute -bottom-8 -right-8 md:-right-16 bg-aldees-yellow p-8 shadow-2xl">
               <div className="text-aldees-black">
-                <span
-                  className="block text-6xl md:text-7xl font-bold leading-none"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-                >
+                <span className="block text-6xl md:text-7xl font-display font-bold leading-none">
                   15+
                 </span>
-                <span className="text-sm tracking-wider uppercase font-medium">Years of Excellence</span>
+                <span className="text-sm tracking-wider uppercase font-medium">
+                  Years of Excellence
+                </span>
               </div>
             </div>
 
@@ -128,23 +134,33 @@ export default function About() {
               Our Story
             </span>
 
-            <h2
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-aldees-offwhite mb-8 leading-[0.9]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-            >
-              Where Bold
-              <span className="block text-aldees-yellow">Flavor Meets</span>
-              Soul
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-aldees-offwhite mb-8 leading-[0.9]">
+              The Story of
+              <span className="block text-aldees-yellow">Aldee's</span>
             </h2>
+            <p className="text-lg text-aldees-offwhite/70 mb-6 leading-relaxed">
+              Some flavors never fade. They carry the warmth of home, the
+              comfort of family, and memories that stay with us long after
+              childhood.
+            </p>
 
             <p className="text-lg text-aldees-offwhite/70 mb-6 leading-relaxed">
-              Born from a passion for authentic flavors and a love for the classics, ALDEE'S brings you a dining
-              experience that's unapologetically bold. We don't just serve food — we craft cravings.
+              Aldee’s was born from those moments. Inspired by the tastes we
+              grew up loving, our name represents{" "}
+              <span className="italic">all-day delight</span>—timeless flavors
+              meant to be enjoyed at every stage of life.
             </p>
 
             <p className="text-lg text-aldees-offwhite/70 mb-10 leading-relaxed">
-              Every dish tells a story of quality ingredients, time-honored recipes, and that secret something that
-              keeps you coming back for more.
+              Every Aldee’s product is crafted with the same warmth, care, and
+              togetherness that defined those early days—when food was more than
+              nourishment, it was an expression of love.
+            </p>
+
+            <p className="text-lg text-aldees-offwhite/70 mb-10 leading-relaxed font-medium italic">
+              Because what we cherished as kids was never just food. It was a
+              feeling. And at Aldee’s, we bring that feeling back—one
+              unforgettable bite at a time.
             </p>
 
             {/* Features Grid */}
@@ -153,16 +169,14 @@ export default function About() {
                 <div
                   key={index}
                   className="group p-6 bg-aldees-black border border-aldees-yellow/10 hover:border-aldees-yellow/40 transition-all duration-500 cursor-pointer"
-                  data-cursor-hover
-                >
+                  data-cursor-hover>
                   <feature.icon className="w-8 h-8 text-aldees-yellow mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3
-                    className="text-aldees-offwhite font-bold text-lg mb-1"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-                  >
+                  <h3 className="text-aldees-offwhite font-display font-bold text-lg mb-1">
                     {feature.title}
                   </h3>
-                  <p className="text-aldees-offwhite/50 text-sm">{feature.desc}</p>
+                  <p className="text-aldees-offwhite/50 text-sm">
+                    {feature.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -170,5 +184,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

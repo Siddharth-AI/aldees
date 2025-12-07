@@ -1,7 +1,8 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { cheryRush, myriadPro } from "./fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ALDEE'S | Fresh Picks, Flavor Hits",
@@ -25,29 +26,24 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export const viewport = {
   themeColor: "#000000",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="font-sans antialiased bg-aldees-black text-aldees-offwhite overflow-x-hidden">
+      <body
+        className={`${myriadPro.variable} ${cheryRush.variable} font-sans antialiased bg-aldees-black text-aldees-offwhite overflow-x-hidden`}>
         {children}
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

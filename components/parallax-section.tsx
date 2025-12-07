@@ -33,7 +33,7 @@ export default function ParallaxSection() {
         { y: -200, opacity: 0, scale: 0.8, rotateX: 45 },
         {
           y: 0,
-          opacity: 1,
+          opacity: 0.8,
           scale: 1,
           rotateX: 0,
           duration: 1.5,
@@ -98,7 +98,7 @@ export default function ParallaxSection() {
           alt="Restaurant Ambience"
           className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-aldees-black via-aldees-black/70 to-aldees-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-aldees-black via-aldees-black/70 to-aldees-black" />
       </div>
 
       {/* Floating Glass Card */}
@@ -108,7 +108,7 @@ export default function ParallaxSection() {
         style={{ perspective: "1000px" }}>
         <div className="relative bg-aldees-black/40 backdrop-blur-2xl border border-aldees-yellow/20 p-12 md:p-20 shadow-[0_0_100px_rgba(255,229,0,0.1)]">
           {/* Glass Shine Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-aldees-yellow/10 via-transparent to-transparent opacity-50" />
+          <div className="absolute inset-0 bg-linear-to-br from-aldees-yellow/10 via-transparent to-transparent opacity-50" />
 
           {/* Corner Accents */}
           <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-aldees-yellow" />
@@ -118,9 +118,7 @@ export default function ParallaxSection() {
             <span className="inline-block text-aldees-yellow text-sm tracking-[0.4em] uppercase mb-6">
               Why Choose Us
             </span>
-            <h2
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-aldees-offwhite mb-8 leading-[0.9]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-aldees-offwhite mb-8 leading-[0.9]">
               Crafting
               <span className="block text-aldees-yellow">Unforgettable</span>
               Moments
@@ -145,9 +143,8 @@ export default function ParallaxSection() {
               <div key={i} className="text-center">
                 <div className="flex items-baseline justify-center gap-1">
                   <span
-                    className="stat-number text-4xl md:text-5xl font-bold text-aldees-yellow"
-                    data-target={stat.number}
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    className="stat-number text-4xl md:text-5xl font-display font-bold text-aldees-yellow"
+                    data-target={stat.number}>
                     0
                   </span>
                   <span className="text-2xl text-aldees-yellow">

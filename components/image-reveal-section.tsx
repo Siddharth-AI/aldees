@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const images = [
   {
@@ -22,22 +22,22 @@ const images = [
     title: "Divine Desserts",
     desc: "Sweet perfection",
   },
-]
+];
 
 export default function ImageRevealSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const imagesRef = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Horizontal scroll with image reveals
       imagesRef.current.forEach((img, i) => {
-        if (!img) return
+        if (!img) return;
 
-        const imageEl = img.querySelector(".reveal-image")
-        const overlay = img.querySelector(".reveal-overlay")
-        const content = img.querySelector(".reveal-content")
+        const imageEl = img.querySelector(".reveal-image");
+        const overlay = img.querySelector(".reveal-overlay");
+        const content = img.querySelector(".reveal-content");
 
         // Image clip reveal from center
         gsap.fromTo(
@@ -45,15 +45,15 @@ export default function ImageRevealSection() {
           { clipPath: "inset(50% 50% 50% 50%)" },
           {
             clipPath: "inset(0% 0% 0% 0%)",
-            duration: 1.5,
+            duration: 1.2,
             ease: "power4.inOut",
             scrollTrigger: {
               trigger: img,
               start: "top 70%",
               toggleActions: "play none none reverse",
             },
-          },
-        )
+          }
+        );
 
         // Overlay slide out
         gsap.fromTo(
@@ -61,16 +61,16 @@ export default function ImageRevealSection() {
           { scaleX: 1 },
           {
             scaleX: 0,
-            duration: 1,
+            duration: 0.9,
             ease: "power4.inOut",
-            delay: 0.3,
+            delay: 0.2,
             scrollTrigger: {
               trigger: img,
               start: "top 70%",
               toggleActions: "play none none reverse",
             },
-          },
-        )
+          }
+        );
 
         // Content fade in
         gsap.fromTo(
@@ -79,16 +79,16 @@ export default function ImageRevealSection() {
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            delay: 0.8,
+            duration: 0.7,
+            delay: 0.7,
             ease: "power3.out",
             scrollTrigger: {
               trigger: img,
               start: "top 70%",
               toggleActions: "play none none reverse",
             },
-          },
-        )
+          }
+        );
 
         // Parallax effect on scroll
         gsap.to(imageEl, {
@@ -100,15 +100,17 @@ export default function ImageRevealSection() {
             end: "bottom top",
             scrub: 1,
           },
-        })
-      })
-    }, sectionRef)
+        });
+      });
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-32 bg-aldees-black overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative py-32 bg-aldees-black overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-aldees-yellow/5 rounded-full blur-[200px]" />
 
@@ -120,8 +122,7 @@ export default function ImageRevealSection() {
           </span>
           <h2
             className="text-5xl md:text-7xl font-bold text-aldees-offwhite"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-          >
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
             Taste The <span className="text-aldees-yellow">Excellence</span>
           </h2>
         </div>
@@ -132,12 +133,11 @@ export default function ImageRevealSection() {
             <div
               key={i}
               ref={(el) => {
-                imagesRef.current[i] = el
+                imagesRef.current[i] = el;
               }}
-              className="group relative"
-            >
+              className="group relative">
               {/* Image Container */}
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="relative aspect-4/5 overflow-hidden">
                 <div className="reveal-image absolute inset-0">
                   <img
                     src={image.src || "/placeholder.svg"}
@@ -150,15 +150,16 @@ export default function ImageRevealSection() {
                 <div className="reveal-overlay absolute inset-0 bg-aldees-yellow origin-right" />
 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-aldees-black via-aldees-black/20 to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-linear-to-t from-aldees-black via-aldees-black/20 to-transparent opacity-60" />
 
                 {/* Content */}
                 <div className="reveal-content absolute bottom-0 left-0 right-0 p-8">
-                  <span className="text-aldees-yellow text-sm tracking-[0.2em] uppercase mb-2 block">0{i + 1}</span>
+                  <span className="text-aldees-yellow text-sm tracking-[0.2em] uppercase mb-2 block">
+                    0{i + 1}
+                  </span>
                   <h3
                     className="text-3xl font-bold text-aldees-offwhite mb-2"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-                  >
+                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                     {image.title}
                   </h3>
                   <p className="text-aldees-offwhite/70">{image.desc}</p>
@@ -172,5 +173,5 @@ export default function ImageRevealSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
