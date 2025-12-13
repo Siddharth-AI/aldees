@@ -272,16 +272,16 @@ export default function LocationHours() {
 
       <div className="absolute inset-0 noise-overlay" />
 
-      <div className="relative container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+      <div className="relative container mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-24">
           {/* Content */}
           <div ref={contentRef}>
             <div ref={headerRef}>
-              <span className="inline-block text-aldees-yellow text-sm tracking-[0.3em] uppercase mb-6 font-sans font-semibold">
+              <span className="inline-block text-aldees-yellow text-sm tracking-[0.3em] uppercase mb-4 sm:mb-6 font-sans font-semibold">
                 Visit Us
               </span>
 
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-aldees-offwhite mb-12 leading-[0.9]">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-aldees-offwhite mb-8 sm:mb-12 leading-[0.9]">
                 Come Get
                 <span className="block text-aldees-yellow">
                   Your Fix
@@ -290,16 +290,16 @@ export default function LocationHours() {
             </div>
 
             {/* Contact Info */}
-            <div ref={contactRef} className="space-y-8 mb-12">
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="w-6 h-6 text-aldees-black" />
+            <div ref={contactRef} className="space-y-6 sm:space-y-8 mb-8 sm:mb-12">
+              <div className="flex items-start gap-4 sm:gap-6 group">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-aldees-black" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-aldees-offwhite font-display font-bold mb-1">
+                  <h3 className="text-lg sm:text-xl text-aldees-offwhite font-display font-bold mb-1">
                     Location
                   </h3>
-                  <p className="text-aldees-offwhite/70 leading-relaxed font-sans">
+                  <p className="text-sm sm:text-base text-aldees-offwhite/70 leading-relaxed font-sans">
                     123 Flavor Street, Downtown District
                     <br />
                     New York, NY 10001
@@ -307,36 +307,36 @@ export default function LocationHours() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 text-aldees-black" />
+              <div className="flex items-start gap-4 sm:gap-6 group">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-aldees-black" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-aldees-offwhite font-display font-bold mb-1">
+                  <h3 className="text-lg sm:text-xl text-aldees-offwhite font-display font-bold mb-1">
                     Phone
                   </h3>
-                  <p className="text-aldees-offwhite/70 font-sans">(555) 123-4567</p>
+                  <p className="text-sm sm:text-base text-aldees-offwhite/70 font-sans">(555) 123-4567</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 text-aldees-black" />
+              <div className="flex items-start gap-4 sm:gap-6 group">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-aldees-yellow flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-aldees-black" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-aldees-offwhite font-display font-bold mb-1">
+                  <h3 className="text-lg sm:text-xl text-aldees-offwhite font-display font-bold mb-1">
                     Email
                   </h3>
-                  <p className="text-aldees-offwhite/70 font-sans">hello@aldees.com</p>
+                  <p className="text-sm sm:text-base text-aldees-offwhite/70 font-sans">hello@aldees.com</p>
                 </div>
               </div>
             </div>
 
             {/* Hours */}
-            <div ref={hoursRef} className="mb-12">
-              <div className="flex items-center gap-4 mb-6">
-                <Clock className="w-6 h-6 text-aldees-yellow" />
-                <h3 className="text-2xl font-display font-bold text-aldees-offwhite">
+            <div ref={hoursRef} className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-aldees-yellow" />
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-aldees-offwhite">
                   Opening Hours
                 </h3>
               </div>
@@ -345,15 +345,15 @@ export default function LocationHours() {
                 {hours.map((schedule, index) => (
                   <div
                     key={index}
-                    className={`flex justify-between py-5 px-6 hover:bg-aldees-yellow/10 transition-colors duration-300 ${
+                    className={`flex flex-col sm:flex-row sm:justify-between py-4 sm:py-5 px-4 sm:px-6 hover:bg-aldees-yellow/10 transition-colors duration-300 ${
                       index !== hours.length - 1
                         ? "border-b-2 border-aldees-yellow/20"
                         : ""
                     }`}>
-                    <span className="text-aldees-offwhite/80 font-sans font-medium">
+                    <span className="text-sm sm:text-base text-aldees-offwhite/80 font-sans font-medium mb-1 sm:mb-0">
                       {schedule.day}
                     </span>
-                    <span className="text-aldees-yellow font-display font-bold">
+                    <span className="text-sm sm:text-base text-aldees-yellow font-display font-bold">
                       {schedule.time}
                     </span>
                   </div>
@@ -362,15 +362,15 @@ export default function LocationHours() {
             </div>
 
             {/* CTA */}
-            <button className="group inline-flex items-center gap-4 px-10 py-5 bg-aldees-yellow text-aldees-black text-lg tracking-wider uppercase font-display font-bold hover:bg-aldees-offwhite transition-all duration-500">
+            <button className="group inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-10 py-4 sm:py-5 bg-aldees-yellow text-aldees-black text-base sm:text-lg tracking-wider uppercase font-display font-bold hover:bg-aldees-offwhite transition-all duration-500 w-full sm:w-auto justify-center sm:justify-start">
               Get Directions
-              <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </button>
           </div>
 
           {/* Map */}
-          <div ref={mapRef} className="relative" style={{ perspective: "1000px" }}>
-            <div className="relative aspect-square lg:aspect-auto lg:h-full min-h-[500px] bg-aldees-black overflow-hidden border-2 border-aldees-yellow/30 shadow-[0_0_80px_rgba(255,229,0,0.15)]">
+          <div ref={mapRef} className="relative mt-8 lg:mt-0" style={{ perspective: "1000px" }}>
+            <div className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] bg-aldees-black overflow-hidden border-2 border-aldees-yellow/30 shadow-[0_0_80px_rgba(255,229,0,0.15)]">
               {/* Map Embed Placeholder */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
@@ -388,16 +388,16 @@ export default function LocationHours() {
               {/* Location Pin */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                 <div className="relative">
-                  <div className="w-16 h-16 bg-aldees-yellow rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-                    <MapPin className="w-8 h-8 text-aldees-black" />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-aldees-yellow rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                    <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-aldees-black" />
                   </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-aldees-yellow rotate-45" />
+                  <div className="absolute -bottom-1.5 sm:-bottom-2 left-1/2 -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-aldees-yellow rotate-45" />
                 </div>
               </div>
             </div>
 
             {/* Decorative Frame */}
-            <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-aldees-yellow/20 -z-10" />
+            <div className="absolute -bottom-3 sm:-bottom-6 -right-3 sm:-right-6 w-full h-full border-2 sm:border-4 border-aldees-yellow/20 -z-10" />
           </div>
         </div>
       </div>
