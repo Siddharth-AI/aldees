@@ -273,7 +273,7 @@ export default function LocationHours() {
       <div className="absolute inset-0 noise-overlay" />
 
       <div className="relative container mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-24">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-24">
           {/* Content */}
           <div ref={contentRef}>
             <div ref={headerRef}>
@@ -345,15 +345,15 @@ export default function LocationHours() {
                 {hours.map((schedule, index) => (
                   <div
                     key={index}
-                    className={`flex flex-col sm:flex-row sm:justify-between py-4 sm:py-5 px-4 sm:px-6 hover:bg-aldees-yellow/10 transition-colors duration-300 ${
+                    className={`flex flex-col md:flex-row md:justify-between py-4 md:py-5 px-4 md:px-6 hover:bg-aldees-yellow/10 transition-colors duration-300 ${
                       index !== hours.length - 1
                         ? "border-b-2 border-aldees-yellow/20"
                         : ""
                     }`}>
-                    <span className="text-sm sm:text-base text-aldees-offwhite/80 font-sans font-medium mb-1 sm:mb-0">
+                    <span className="text-sm md:text-base text-aldees-offwhite/80 font-sans font-medium mb-1 md:mb-0">
                       {schedule.day}
                     </span>
-                    <span className="text-sm sm:text-base text-aldees-yellow font-display font-bold">
+                    <span className="text-sm md:text-base text-aldees-yellow font-display font-bold">
                       {schedule.time}
                     </span>
                   </div>
@@ -362,15 +362,15 @@ export default function LocationHours() {
             </div>
 
             {/* CTA */}
-            <button className="group inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-10 py-4 sm:py-5 bg-aldees-yellow text-aldees-black text-base sm:text-lg tracking-wider uppercase font-display font-bold hover:bg-aldees-offwhite transition-all duration-500 w-full sm:w-auto justify-center sm:justify-start">
+            <button className="group inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-10 py-4 sm:py-5 bg-aldees-yellow text-aldees-black text-base sm:text-lg tracking-wider uppercase font-display font-bold hover:bg-aldees-offwhite transition-all duration-500 w-full md:w-auto justify-center md:justify-start">
               Get Directions
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </button>
           </div>
 
           {/* Map */}
-          <div ref={mapRef} className="relative mt-8 lg:mt-0" style={{ perspective: "1000px" }}>
-            <div className="relative aspect-square sm:aspect-video lg:aspect-auto lg:h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] bg-aldees-black overflow-hidden border-2 border-aldees-yellow/30 shadow-[0_0_80px_rgba(255,229,0,0.15)]">
+          <div ref={mapRef} className="relative mt-8 md:mt-0" style={{ perspective: "1000px" }}>
+            <div className="relative aspect-square md:aspect-video lg:aspect-auto lg:h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px] bg-aldees-black overflow-hidden border-2 border-aldees-yellow/30 shadow-[0_0_80px_rgba(255,229,0,0.15)]">
               {/* Map Embed Placeholder */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
