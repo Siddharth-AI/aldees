@@ -1,18 +1,28 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useEffect, useRef, useState } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, Twitter, ArrowRight } from "lucide-react"
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Instagram,
+  Facebook,
+  Twitter,
+  ArrowRight,
+} from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
-  const infoRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,22 +30,25 @@ export default function ContactSection() {
     guests: "",
     date: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero parallax
-      gsap.to(heroRef.current?.querySelector("img"), {
-        yPercent: 30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      })
+      const heroImage = heroRef.current?.querySelector("img");
+      if (heroImage) {
+        gsap.to(heroImage, {
+          yPercent: 30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      }
 
       // Form reveal
       gsap.fromTo(
@@ -50,8 +63,8 @@ export default function ContactSection() {
             trigger: formRef.current,
             start: "top 80%",
           },
-        },
-      )
+        }
+      );
 
       // Info reveal
       gsap.fromTo(
@@ -66,11 +79,11 @@ export default function ContactSection() {
             trigger: infoRef.current,
             start: "top 80%",
           },
-        },
-      )
+        }
+      );
 
       // Contact items stagger
-      const items = infoRef.current?.querySelectorAll(".contact-item")
+      const items = infoRef.current?.querySelectorAll(".contact-item");
       items?.forEach((item, i) => {
         gsap.fromTo(
           item,
@@ -85,30 +98,30 @@ export default function ContactSection() {
               trigger: item,
               start: "top 90%",
             },
-          },
-        )
-      })
-    }, sectionRef)
+          }
+        );
+      });
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setTimeout(() => setIsSubmitting(false), 2000)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => setIsSubmitting(false), 2000);
+  };
 
   return (
     <section ref={sectionRef} className="relative bg-aldees-black min-h-screen">
       {/* Hero Section with Parallax Background */}
       <div ref={heroRef} className="relative h-[50vh] overflow-hidden">
         <img
-          src="/placeholder.svg?height=1080&width=1920"
+          src="/contact-us-bg.png?height=1080&width=1920"
           alt="Contact Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-aldees-black/70 via-aldees-black/50 to-aldees-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-aldees-black/70 via-aldees-black/50 to-aldees-black" />
 
         {/* Hero Content */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -118,8 +131,7 @@ export default function ContactSection() {
             </span>
             <h1
               className="text-6xl md:text-8xl lg:text-9xl font-bold text-aldees-offwhite leading-[0.85]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-            >
+              style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
               Contact
               <span className="block text-aldees-yellow">Us</span>
             </h1>
@@ -127,7 +139,7 @@ export default function ContactSection() {
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-aldees-black to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-aldees-black to-transparent" />
       </div>
 
       <div className="relative container mx-auto px-6 py-20">
@@ -139,12 +151,10 @@ export default function ContactSection() {
             <form
               ref={formRef}
               onSubmit={handleSubmit}
-              className="relative bg-aldees-black/50 backdrop-blur-sm border border-aldees-yellow/10 p-8 md:p-12"
-            >
+              className="relative bg-aldees-black/50 backdrop-blur-sm border border-aldees-yellow/10 p-8 md:p-12">
               <h2
                 className="text-3xl md:text-4xl font-bold text-aldees-offwhite mb-8"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-              >
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 Make A Reservation
               </h2>
 
@@ -156,18 +166,24 @@ export default function ContactSection() {
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite placeholder-aldees-offwhite/30 focus:border-aldees-yellow focus:outline-none transition-colors duration-300"
                     placeholder="John Doe"
                     required
                   />
                 </div>
                 <div className="group">
-                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">Email *</label>
+                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">
+                    Email *
+                  </label>
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite placeholder-aldees-offwhite/30 focus:border-aldees-yellow focus:outline-none transition-colors duration-300"
                     placeholder="john@example.com"
                     required
@@ -177,22 +193,29 @@ export default function ContactSection() {
 
               <div className="grid sm:grid-cols-3 gap-6 mb-6">
                 <div>
-                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">Phone</label>
+                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">
+                    Phone
+                  </label>
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
                     className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite placeholder-aldees-offwhite/30 focus:border-aldees-yellow focus:outline-none transition-colors duration-300"
                     placeholder="+91 98765 43210"
                   />
                 </div>
                 <div>
-                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">Guests</label>
+                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">
+                    Guests
+                  </label>
                   <select
                     value={formData.guests}
-                    onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                    className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite focus:border-aldees-yellow focus:outline-none transition-colors duration-300"
-                  >
+                    onChange={(e) =>
+                      setFormData({ ...formData, guests: e.target.value })
+                    }
+                    className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite focus:border-aldees-yellow focus:outline-none transition-colors duration-300">
                     <option value="">Select</option>
                     {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                       <option key={n} value={n}>
@@ -203,21 +226,29 @@ export default function ContactSection() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">Date</label>
+                  <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">
+                    Date
+                  </label>
                   <input
                     type="date"
                     value={formData.date}
-                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, date: e.target.value })
+                    }
                     className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite focus:border-aldees-yellow focus:outline-none transition-colors duration-300"
                   />
                 </div>
               </div>
 
               <div className="mb-8">
-                <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">Message</label>
+                <label className="block text-aldees-offwhite/60 text-xs tracking-wider uppercase mb-3">
+                  Message
+                </label>
                 <textarea
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   rows={4}
                   className="w-full bg-aldees-black/50 border border-aldees-yellow/20 px-5 py-4 text-aldees-offwhite placeholder-aldees-offwhite/30 focus:border-aldees-yellow focus:outline-none transition-colors duration-300 resize-none"
                   placeholder="Any special requests or dietary requirements..."
@@ -227,9 +258,10 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full inline-flex items-center justify-center gap-4 px-12 py-5 bg-aldees-yellow text-aldees-black text-lg tracking-wider uppercase font-bold overflow-hidden disabled:opacity-70"
-              >
-                <span className="relative z-10">{isSubmitting ? "Sending..." : "Send Message"}</span>
+                className="group relative w-full inline-flex items-center justify-center gap-4 px-12 py-5 bg-aldees-yellow text-aldees-black text-lg tracking-wider uppercase font-bold overflow-hidden disabled:opacity-70">
+                <span className="relative z-10">
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </span>
                 <Send className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
                 <span className="absolute inset-0 bg-aldees-offwhite translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
@@ -241,24 +273,25 @@ export default function ContactSection() {
             <div>
               <h2
                 className="text-3xl md:text-4xl font-bold text-aldees-offwhite mb-8"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-              >
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 Visit Us
               </h2>
               <p className="text-aldees-offwhite/60 text-lg leading-relaxed">
-                Have a question, feedback, or want to make a reservation? We'd love to hear from you. Walk-ins are
-                always welcome!
+                Have a question, feedback, or want to make a reservation? We'd
+                love to hear from you. Walk-ins are always welcome!
               </p>
             </div>
 
             {/* Contact Details */}
             <div className="space-y-6">
               <div className="contact-item flex items-start gap-5 group p-4 border border-transparent hover:border-aldees-yellow/20 transition-all duration-300">
-                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center flex-shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
+                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
                   <MapPin className="w-6 h-6 text-aldees-yellow group-hover:text-aldees-black transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">Address</h4>
+                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">
+                    Address
+                  </h4>
                   <p className="text-aldees-offwhite/60">
                     123 Flavor Street, Downtown District
                     <br />
@@ -268,37 +301,42 @@ export default function ContactSection() {
               </div>
 
               <div className="contact-item flex items-start gap-5 group p-4 border border-transparent hover:border-aldees-yellow/20 transition-all duration-300">
-                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center flex-shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
+                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
                   <Phone className="w-6 h-6 text-aldees-yellow group-hover:text-aldees-black transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">Phone</h4>
+                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">
+                    Phone
+                  </h4>
                   <p className="text-aldees-offwhite/60">(555) 123-4567</p>
                   <a
                     href="tel:+15551234567"
-                    className="inline-flex items-center gap-2 text-aldees-yellow text-sm mt-2 hover:underline"
-                  >
+                    className="inline-flex items-center gap-2 text-aldees-yellow text-sm mt-2 hover:underline">
                     Call Now <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
               </div>
 
               <div className="contact-item flex items-start gap-5 group p-4 border border-transparent hover:border-aldees-yellow/20 transition-all duration-300">
-                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center flex-shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
+                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
                   <Mail className="w-6 h-6 text-aldees-yellow group-hover:text-aldees-black transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">Email</h4>
+                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">
+                    Email
+                  </h4>
                   <p className="text-aldees-offwhite/60">hello@aldees.com</p>
                 </div>
               </div>
 
               <div className="contact-item flex items-start gap-5 group p-4 border border-transparent hover:border-aldees-yellow/20 transition-all duration-300">
-                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center flex-shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
+                <div className="w-14 h-14 bg-aldees-yellow/10 border border-aldees-yellow/30 flex items-center justify-center shrink-0 group-hover:bg-aldees-yellow group-hover:border-aldees-yellow transition-all duration-300">
                   <Clock className="w-6 h-6 text-aldees-yellow group-hover:text-aldees-black transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">Hours</h4>
+                  <h4 className="text-aldees-offwhite font-bold mb-1 text-lg">
+                    Hours
+                  </h4>
                   <p className="text-aldees-offwhite/60">
                     Mon-Thu: 11am - 10pm
                     <br />
@@ -314,8 +352,7 @@ export default function ContactSection() {
             <div>
               <h3
                 className="text-xl font-bold text-aldees-offwhite mb-4"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-              >
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 Follow Us
               </h3>
               <div className="flex gap-4">
@@ -324,8 +361,7 @@ export default function ContactSection() {
                     key={i}
                     href="#"
                     className="w-14 h-14 border border-aldees-yellow/30 flex items-center justify-center text-aldees-offwhite/60 hover:bg-aldees-yellow hover:text-aldees-black hover:border-aldees-yellow transition-all duration-300"
-                    aria-label="Social link"
-                  >
+                    aria-label="Social link">
                     <Icon className="w-6 h-6" />
                   </a>
                 ))}
@@ -345,12 +381,14 @@ export default function ContactSection() {
               />
               <div className="absolute inset-0 bg-aldees-yellow/5 pointer-events-none" />
               <div className="absolute top-4 left-4 bg-aldees-black/80 backdrop-blur-sm px-4 py-2 border border-aldees-yellow/30">
-                <span className="text-aldees-yellow text-sm font-bold tracking-wider">ALDEE'S</span>
+                <span className="text-aldees-yellow text-sm font-bold tracking-wider">
+                  ALDEE'S
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -33,7 +33,7 @@ export default function ParallaxSection() {
         { y: -200, opacity: 0, scale: 0.8, rotateX: 45 },
         {
           y: 0,
-          opacity: 0.8,
+          opacity: 0.9,
           scale: 1,
           rotateX: 0,
           duration: 1.5,
@@ -94,7 +94,8 @@ export default function ParallaxSection() {
       {/* Parallax Background */}
       <div ref={bgRef} className="absolute inset-0 -top-32 -bottom-32">
         <img
-          src="/restaurant-outdoor-seating-patio-evening-lights-ro.jpg"
+          // src="/restaurant-outdoor-seating-patio-evening-lights-ro.jpg"
+          src="/hero-bg.png"
           alt="Restaurant Ambience"
           className="w-full h-full object-cover scale-110"
         />

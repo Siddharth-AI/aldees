@@ -124,11 +124,14 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
       {/* Video Background */}
       <div ref={videoRef} className="absolute inset-0 -top-20 -bottom-20">
         <img
-          src="/dark-moody-restaurant-interior-with-warm-golden-li.jpg"
+          // src="/dark-moody-restaurant-interior-with-warm-golden-li.jpg"
+          // src="/hero-bg.png"
+          // src="/hero-bg-1.png"
+          src="/hero-bg-3.png"
           alt="ALDEE'S Restaurant Ambience"
           className="w-full h-full object-cover scale-110"
         />
@@ -155,7 +158,7 @@ export default function Hero() {
       {/* Content with 3D perspective */}
       <div
         ref={contentRef}
-        className="relative z-10 container mx-auto px-6 text-center"
+        className="relative z-10 container mx-auto px-4 md:px-6 text-center"
         style={{ perspective: "1000px", transformStyle: "preserve-3d" }}>
         {/* Tagline */}
         <div className="mb-8 overflow-hidden">
@@ -168,9 +171,12 @@ export default function Hero() {
         {/* Main Title */}
         <h1
           ref={titleRef}
-          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-aldees-offwhite mb-8 tracking-tight leading-none glow-yellow">
+          className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold text-aldees-offwhite mb-6 md:mb-8 leading-none glow-yellow"
+          style={{ letterSpacing: "0.01em" }}>
           FRESH PICKS
-          <span className="block text-aldees-yellow">FLAVOR HITS</span>
+          <span className="block text-aldees-yellow">
+            {"\u00A0"}FLAVOR HITS
+          </span>
         </h1>
 
         {/* Subtitle */}
@@ -193,12 +199,12 @@ export default function Hero() {
             </span>
           </button>
 
-          <button className="group flex items-center gap-4 px-8 py-5 border border-aldees-offwhite/30 text-aldees-offwhite font-medium text-lg tracking-wider uppercase hover:border-aldees-yellow hover:text-aldees-yellow transition-all duration-300">
+          {/* <button className="group flex items-center gap-4 px-8 py-5 border border-aldees-offwhite/30 text-aldees-offwhite font-medium text-lg tracking-wider uppercase hover:border-aldees-yellow hover:text-aldees-yellow transition-all duration-300">
             <span className="w-12 h-12 rounded-full border border-current flex items-center justify-center group-hover:bg-aldees-yellow group-hover:text-aldees-black transition-all duration-300">
               <Play className="w-5 h-5 ml-1" />
             </span>
             Watch Story
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -221,9 +227,9 @@ export default function Hero() {
 
       <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 z-10">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-aldees-yellow/50 to-transparent" />
+          <div className="w-px h-20 bg-linear-to-b from-transparent via-aldees-yellow/50 to-transparent" />
           <div className="w-3 h-3 border border-aldees-yellow/50 rotate-45" />
-          <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-aldees-yellow/50 to-transparent" />
+          <div className="w-px h-20 bg-linear-to-b from-transparent via-aldees-yellow/50 to-transparent" />
         </div>
       </div>
     </section>

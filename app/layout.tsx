@@ -8,23 +8,18 @@ export const metadata: Metadata = {
   title: "ALDEE'S | Fresh Picks, Flavor Hits",
   description:
     "Experience bold flavors and vintage vibes at ALDEE'S. Bite into bold - your cravings deserve this goodness.",
-  generator: "v0.app",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/navbar_mobile_logo.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/navbar_mobile_logo.png",
         media: "(prefers-color-scheme: dark)",
       },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
     ],
-    apple: "/apple-icon.png",
+    apple: "/navbar_mobile_logo.png",
   },
 };
 
