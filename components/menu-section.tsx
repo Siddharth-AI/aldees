@@ -276,7 +276,7 @@ export default function MenuSection() {
           alt="Menu Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-aldees-black/60 via-aldees-black/40 to-aldees-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-aldees-black/60 via-aldees-black/40 to-aldees-black" />
 
         {/* Hero Content */}
         <div className="absolute inset-0 flex items-center justify-center px-4">
@@ -294,7 +294,7 @@ export default function MenuSection() {
         </div>
 
         {/* Decorative Elements - Hidden on mobile */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-aldees-black to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-aldees-black to-transparent" />
         <div className="hidden md:block absolute top-8 left-8 w-16 h-16 lg:w-24 lg:h-24 border-l-2 border-t-2 border-aldees-yellow/30" />
         <div className="hidden md:block absolute top-8 right-8 w-16 h-16 lg:w-24 lg:h-24 border-r-2 border-t-2 border-aldees-yellow/30" />
       </div>
@@ -414,7 +414,7 @@ export default function MenuSection() {
               onMouseMove={(e) => handleCardMouseMove(e, index)}
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
-              className="group relative bg-card rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative bg-card overflow-hidden cursor-pointer"
               style={{
                 transform: `perspective(1000px) rotateX(${
                   cardRotations[index]?.x || 0
@@ -432,11 +432,11 @@ export default function MenuSection() {
                 />
 
                 {/* Overlay */}
-                <div className="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300" />
+                <div className="card-overlay absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300" />
 
                 {/* Shine effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </div>
 
                 {/* Badges */}
@@ -509,7 +509,7 @@ export default function MenuSection() {
               </div>
 
               {/* Hover Border */}
-              <div className="hover-border absolute inset-0 border-4 border-aldees-yellow scale-95 opacity-0 transition-all duration-500 pointer-events-none rounded-2xl" />
+              <div className="hover-border absolute inset-0 border-4 border-aldees-yellow scale-95 opacity-0 transition-all duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
