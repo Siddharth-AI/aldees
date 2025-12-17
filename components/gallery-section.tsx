@@ -109,21 +109,43 @@ export default function GallerySection() {
         });
       }
 
+      // Hero content animations
+      const heroSubtitle = heroRef.current?.querySelector(".hero-subtitle");
+      const heroTitle = heroRef.current?.querySelector(".hero-title");
+
+      if (heroSubtitle) {
+        gsap.fromTo(
+          heroSubtitle,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
+        );
+      }
+
+      if (heroTitle) {
+        gsap.fromTo(
+          heroTitle,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.2, delay: 0.6, ease: "power3.out" }
+        );
+      }
+
       // Header reveal
-      gsap.fromTo(
-        headerRef.current,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 80%",
-          },
-        }
-      );
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -171,12 +193,12 @@ export default function GallerySection() {
 
         {/* Hero Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <span className="inline-block text-aldees-yellow text-sm tracking-[0.4em] uppercase mb-6 font-medium">
+          <div className="text-center hero-content">
+            <span className="hero-subtitle inline-block text-aldees-yellow text-sm tracking-[0.4em] uppercase mb-6 font-medium">
               Our Gallery
             </span>
             <h1
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-aldees-offwhite leading-[0.85]"
+              className="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-aldees-offwhite leading-[0.85]"
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
               Visual
               <span className="block text-aldees-yellow">Journey</span>
@@ -204,23 +226,21 @@ export default function GallerySection() {
         <div className="flex justify-center gap-4 mb-16">
           <button
             onClick={() => setActiveTab("ambience")}
-            className={`relative px-10 py-5 text-lg tracking-wider uppercase font-bold transition-all duration-500 overflow-hidden ${
+            className={`relative px-10 py-5 text-lg tracking-wider uppercase font-bold transition-all duration-500 overflow-hidden font-sans ${
               activeTab === "ambience"
                 ? "bg-aldees-yellow text-aldees-black"
                 : "border-2 border-aldees-yellow/30 text-aldees-offwhite hover:border-aldees-yellow"
-            }`}
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            Restaurant Ambience
+            }`}>
+            Restaurant
           </button>
           <button
             onClick={() => setActiveTab("food")}
-            className={`relative px-10 py-5 text-lg tracking-wider uppercase font-bold transition-all duration-500 overflow-hidden ${
+            className={`relative px-10 py-5 text-lg tracking-wider uppercase font-bold transition-all duration-500 overflow-hidden font-sans ${
               activeTab === "food"
                 ? "bg-aldees-yellow text-aldees-black"
                 : "border-2 border-aldees-yellow/30 text-aldees-offwhite hover:border-aldees-yellow"
-            }`}
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            Food Gallery
+            }`}>
+            Food
           </button>
         </div>
 

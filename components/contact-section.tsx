@@ -50,6 +50,24 @@ export default function ContactSection() {
         });
       }
 
+      // Hero content animations
+      const heroSubtitle = heroRef.current?.querySelector(".hero-subtitle");
+      const heroTitle = heroRef.current?.querySelector(".hero-title");
+      
+      if (heroSubtitle) {
+        gsap.fromTo(heroSubtitle, 
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
+        );
+      }
+      
+      if (heroTitle) {
+        gsap.fromTo(heroTitle,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.2, delay: 0.6, ease: "power3.out" }
+        );
+      }
+
       // Form reveal
       gsap.fromTo(
         formRef.current,
@@ -81,6 +99,24 @@ export default function ContactSection() {
           },
         }
       );
+
+      // Decorative elements animation
+      const leftCorner = heroRef.current?.querySelector(".left-corner");
+      const rightCorner = heroRef.current?.querySelector(".right-corner");
+      
+      if (leftCorner) {
+        gsap.fromTo(leftCorner,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.8, delay: 0.9, ease: "back.out(1.7)" }
+        );
+      }
+      
+      if (rightCorner) {
+        gsap.fromTo(rightCorner,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.8, delay: 1.1, ease: "back.out(1.7)" }
+        );
+      }
 
       // Contact items stagger
       const items = infoRef.current?.querySelectorAll(".contact-item");
@@ -125,12 +161,12 @@ export default function ContactSection() {
 
         {/* Hero Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <span className="inline-block text-aldees-yellow text-sm tracking-[0.4em] uppercase mb-6 font-medium">
+          <div className="text-center hero-content">
+            <span className="hero-subtitle inline-block text-aldees-yellow text-sm tracking-[0.4em] uppercase mb-6 font-medium">
               Get In Touch
             </span>
             <h1
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-aldees-offwhite leading-[0.85]"
+              className="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-aldees-offwhite leading-[0.85]"
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
               Contact
               <span className="block text-aldees-yellow">Us</span>
@@ -140,6 +176,8 @@ export default function ContactSection() {
 
         {/* Decorative Elements */}
         <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-aldees-black to-transparent" />
+        <div className="left-corner absolute top-8 left-8 w-24 h-24 border-l-2 border-t-2 border-aldees-yellow/30" />
+        <div className="right-corner absolute top-8 right-8 w-24 h-24 border-r-2 border-t-2 border-aldees-yellow/30" />
       </div>
 
       <div className="relative container mx-auto px-6 py-20">

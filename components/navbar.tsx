@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
+  { href: "/menu", label: "Menu" },
 ];
 
 export default function Navbar() {
@@ -244,7 +245,7 @@ export default function Navbar() {
       {/* Mobile Menu - Full Screen */}
       <div
         ref={menuBgRef}
-        className={`fixed inset-0 z-40 lg:hidden bg-aldees-black ${
+        className={`fixed inset-0 z-50 lg:hidden bg-aldees-black ${
           isOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
         style={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}>
