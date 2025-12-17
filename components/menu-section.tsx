@@ -12,6 +12,9 @@ export default function MenuSection() {
   const [activeCategory, setActiveCategory] = useState("starters");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [cardRotations, setCardRotations] = useState<{
+    [key: number]: { x: number; y: number };
+  }>({});
   const categoryButtonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const menuGridRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -193,21 +196,33 @@ export default function MenuSection() {
     });
   };
 
+  const handleCardMouseMove = (
+    e: React.MouseEvent<HTMLDivElement>,
+    index: number
+  ) => {
+    const card = cardsRef.current[index];
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const rotateX = (e.clientY - centerY) / 20;
+    const rotateY = (centerX - e.clientX) / 20;
+
+    setCardRotations((prev) => ({
+      ...prev,
+      [index]: { x: rotateX, y: rotateY },
+    }));
+  };
+
   const handleCardHover = (index: number, isEntering: boolean) => {
     const card = cardsRef.current[index];
     if (!card) return;
 
     if (isEntering) {
-      gsap.to(card, {
-        y: -10,
-        scale: 1.02,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-
       gsap.to(card.querySelector(".card-image"), {
         scale: 1.1,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out",
       });
 
@@ -215,23 +230,33 @@ export default function MenuSection() {
         opacity: 1,
         duration: 0.3,
       });
-    } else {
-      gsap.to(card, {
-        y: 0,
+
+      gsap.to(card.querySelector(".hover-border"), {
         scale: 1,
-        duration: 0.4,
-        ease: "power2.out",
+        opacity: 1,
+        duration: 0.1,
       });
+    } else {
+      setCardRotations((prev) => ({
+        ...prev,
+        [index]: { x: 0, y: 0 },
+      }));
 
       gsap.to(card.querySelector(".card-image"), {
         scale: 1,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out",
       });
 
       gsap.to(card.querySelector(".card-overlay"), {
         opacity: 0,
         duration: 0.3,
+      });
+
+      gsap.to(card.querySelector(".hover-border"), {
+        scale: 0.95,
+        opacity: 0,
+        duration: 0.1,
       });
     }
   };
@@ -386,12 +411,16 @@ export default function MenuSection() {
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
+              onMouseMove={(e) => handleCardMouseMove(e, index)}
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
-              className="group relative bg-card rounded-2xl overflow-hidden"
+              className="group relative bg-card rounded-2xl overflow-hidden cursor-pointer"
               style={{
+                transform: `perspective(1000px) rotateX(${
+                  cardRotations[index]?.x || 0
+                }deg) rotateY(${cardRotations[index]?.y || 0}deg)`,
+                transition: "transform 0.1s ease-out",
                 transformStyle: "preserve-3d",
-                perspective: "1000px",
               }}>
               {/* Image Container */}
               <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-muted">
@@ -404,6 +433,11 @@ export default function MenuSection() {
 
                 {/* Overlay */}
                 <div className="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300" />
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                </div>
 
                 {/* Badges */}
                 <div className="absolute top-3 md:top-4 left-3 md:left-4 flex gap-1.5 md:gap-2 z-10">
@@ -474,10 +508,8 @@ export default function MenuSection() {
                 </div>
               </div>
 
-              {/* Shine effect on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </div>
+              {/* Hover Border */}
+              <div className="hover-border absolute inset-0 border-4 border-aldees-yellow scale-95 opacity-0 transition-all duration-500 pointer-events-none rounded-2xl" />
             </div>
           ))}
         </div>
